@@ -373,12 +373,19 @@ extension AXWindow: WindowType {
     }
 
     func move(toSpace spaceID: CGSSpaceID) {
-        if ProcessInfo.processInfo.isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 14, minorVersion: 5, patchVersion: 0)) {
+        let osVersion = ProcessInfo.processInfo.operatingSystemVersion
+        if ((osVersion.majorVersion >= 15) ||
+            (osVersion.majorVersion == 14 && osVersion.minorVersion >= 5) ||
+            (osVersion.majorVersion == 13 && osVersion.minorVersion >= 6) ||
+            (osVersion.majorVersion == 12 && osVersion.minorVersion >= 7)){
             /*
              See:
              - https://github.com/ianyh/Amethyst/issues/1643
+             - https://github.com/ianyh/Amethyst/issues/1666
              - https://github.com/koekeishiya/yabai/issues/2240
+             - https://github.com/koekeishiya/yabai/issues/2408
              - https://github.com/koekeishiya/yabai/commit/98bbdbd1363f27d35f09338cded0de1ec010d830
+             - https://github.com/koekeishiya/yabai/commit/c8f913cbc0497d1dfe16138f40a8ba6ecaa744f8
              */
             var error: CGError = .success
 

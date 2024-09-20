@@ -41,6 +41,12 @@ Amethyst must be given permissions to use the accessibility APIs in the Privacy 
   <img style="text-align: center" width="500px" src="docs/images/auto-rearranage.png" />
 </p>
 
+or run in a terminal:
+```bash
+defaults write com.apple.dock workspaces-auto-swoosh -bool NO
+killall Dock
+```
+
 Troubleshooting
 ===============
 

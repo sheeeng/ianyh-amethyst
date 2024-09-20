@@ -41,6 +41,12 @@ Amethyst must be given permissions to use the accessibility APIs in the Privacy 
   <img style="text-align: center" width="500px" src="docs/images/auto-rearranage.png" />
 </p>
 
+or run in a terminal:
+```bash
+defaults write com.apple.dock workspaces-auto-swoosh -bool NO
+killall Dock
+```
+
 Troubleshooting
 ===============
 
@@ -103,6 +109,8 @@ And defines the following commands, mostly a mapping to xmonad key combinations.
 | `mod2 + r` | Throw focused window to screen 3 |
 | `mod1 + q` | Focus Screen 4 |
 | `mod2 + q` | Throw focused window to screen 4 |
+| `mod1 + g` | Focus Screen 5 |
+| `mod2 + g` | Throw focused window to screen 5 |
 | `mod1 + t` | Toggle float for focused window |
 | `mod1 + i` | Display current layout |
 | `mod2 + t` | Toggle global tiling |

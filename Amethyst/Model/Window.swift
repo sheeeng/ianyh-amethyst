@@ -374,10 +374,10 @@ extension AXWindow: WindowType {
 
     func move(toSpace spaceID: CGSSpaceID) {
         let osVersion = ProcessInfo.processInfo.operatingSystemVersion
-        if ((osVersion.majorVersion >= 15) ||
+        if (osVersion.majorVersion >= 15) ||
             (osVersion.majorVersion == 14 && osVersion.minorVersion >= 5) ||
             (osVersion.majorVersion == 13 && osVersion.minorVersion >= 6) ||
-            (osVersion.majorVersion == 12 && osVersion.minorVersion >= 7)){
+            (osVersion.majorVersion == 12 && osVersion.minorVersion >= 7) {
             /*
              See:
              - https://github.com/ianyh/Amethyst/issues/1643

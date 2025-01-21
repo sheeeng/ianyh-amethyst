@@ -17,8 +17,11 @@ protocol HotKeyRegistrar {
 extension HotKeyManager: HotKeyRegistrar {
     func registerHotKey(with string: String?, modifiers: AMModifierFlags?, handler: @escaping () -> Void, defaultsKey: String, override: Bool) {
         let name = KeyboardShortcuts.Name(defaultsKey)
+        let migrationKey = "migrated-\(name.rawValue)"
+        let isMigrated = UserDefaults.standard.bool(forKey: migrationKey)
 
         defer {
+            UserDefaults.standard.set(true, forKey: migrationKey)
             KeyboardShortcuts.onKeyUp(for: name, action: handler)
         }
 
@@ -28,7 +31,7 @@ extension HotKeyManager: HotKeyRegistrar {
             KeyboardShortcuts.setShortcut(nil, for: name)
         }
 
-        guard KeyboardShortcuts.getShortcut(for: name) == nil else {
+        guard KeyboardShortcuts.getShortcut(for: name) == nil && !isMigrated else {
             return
         }
 

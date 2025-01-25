@@ -149,6 +149,10 @@ automatically adapts to horizontal/vertical tiling depending on your screen
 orientation. The main pane is on the left in the horizontal orientation and it's
 on the top in the vertical orientation.
 
+#### Two Pane Right
+
+Exactly the same as *Two Pane*, but the main pane is on the right, with the other pane on the left.
+
 #### 3Column-Left
 
 A three-column version of *Tall*, with one main pane on the left (extending the full height of the screen) and two other panes, one in the middle and one on the right. Like *Tall*, if any pane has more than one window, that pane will be split into rows. You can control how many windows are in the main pane as usual; other windows will be assigned as evenly as possible between the other two panes.

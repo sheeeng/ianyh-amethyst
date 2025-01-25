@@ -27,7 +27,7 @@ private enum LayoutExtension<Window: WindowType> {
     case layout(Layout<Window>)
 }
 
-class CustomLayout<Window: WindowType>: StatefulLayout<Window> {
+class CustomLayout<Window: WindowType>: StatefulLayout<Window>, PanedLayout {
     typealias WindowID = Window.WindowID
 
     private enum CodingKeys: String, CodingKey {
@@ -45,6 +45,9 @@ class CustomLayout<Window: WindowType>: StatefulLayout<Window> {
     override var layoutName: String {
         return layout?.objectForKeyedSubscript("name").toString() ?? layoutKey
     }
+
+    var mainPaneRatio: CGFloat { return 1.0 }
+    var mainPaneCount: Int { return 1 }
 
     private let key: String
     private let fileURL: URL
@@ -323,5 +326,25 @@ class CustomLayout<Window: WindowType>: StatefulLayout<Window> {
         }
 
         return jsChange
+    }
+
+    func recommendMainPaneRawRatio(rawRatio: CGFloat) {
+
+    }
+
+    func increaseMainPaneCount() {
+        command(key: "increaseMain")
+    }
+
+    func decreaseMainPaneCount() {
+        command(key: "decreaseMain")
+    }
+
+    func shrinkMainPane() {
+        command(key: "shrinkMain")
+    }
+
+    func expandMainPane() {
+        command(key: "expandMain")
     }
 }
